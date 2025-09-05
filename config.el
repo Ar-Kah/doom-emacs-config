@@ -75,5 +75,17 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(defun toggle-evil-insert-normal ()
+      "Toggle from evil insert mode to normal mode and vise versa."
+      (interactive)
+      (if (evil-insert-state-p)
+          (if (eolp)
+              (evil-normal-state)
+            (progn
+              (forward-char 1)
+              (evil-normal-state)))
+        (evil-insert-state)))
+
 (map! "M-O" #'evil-insert-newline-above)
 (map! "M-o" #'evil-insert-newline-below)
+(map! "§" #'toggle-evil-insert-normal)
