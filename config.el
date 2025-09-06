@@ -86,6 +86,8 @@
               (evil-normal-state)))
         (evil-insert-state)))
 
+(setq dired-listing-switches "-alh")
+
 (map! "M-O" #'evil-insert-newline-above)
 (map! "M-o" #'evil-insert-newline-below)
 (map! "§" #'toggle-evil-insert-normal)
