@@ -84,10 +84,17 @@
             (progn
               (forward-char 1)
               (evil-normal-state)))
-        (evil-insert-state)))
+        (evil-insert-state))
+      (if (evil-visual-state-p)
+          (evil-normal-state)))
 
 (setq dired-listing-switches "-alh")
 
 (map! "M-O" #'evil-insert-newline-above)
 (map! "M-o" #'evil-insert-newline-below)
 (map! "§" #'toggle-evil-insert-normal)
+(map! "M-j" #'drag-stuff-down)
+(map! "M-k" #'drag-stuff-up)
+
+;; Set the path to your Miniconda installation
+(setq conda-anaconda-home "~/miniconda3/")
