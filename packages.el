@@ -49,3 +49,4 @@
 ;; (unpin! t)
 
 (package! conda)
+(package! drag-stuff)
