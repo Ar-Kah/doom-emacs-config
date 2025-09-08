@@ -36,7 +36,11 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
+
+;; line-number colors
+(set-face-foreground 'line-number "#7f848e")                    ; muted gray for other lines
+(set-face-foreground 'line-number-current-line "#61afef")       ; bright blue for current line
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -84,9 +88,10 @@
             (progn
               (forward-char 1)
               (evil-normal-state)))
-        (evil-insert-state))
-      (if (evil-visual-state-p)
-          (evil-normal-state)))
+        ;; if in visual mode escape back to normal mode
+        (if (evil-visual-state-p)
+            (evil-normal-state)
+          (evil-insert-state))))
 
 (setq dired-listing-switches "-alh")
 
