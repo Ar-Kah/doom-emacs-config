@@ -58,7 +58,7 @@
 ;;   - Setting file/directory variables (like `org-directory')
 ;;   - Setting variables which explicitly tell you to set them before their
 ;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
+;;   - Setting doom	es (which start with 'doom-' or '+').
 ;;
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
@@ -93,13 +93,29 @@
             (evil-normal-state)
           (evil-insert-state))))
 
+(defun insert-space-left ()
+        "Insert a space left of the cursor in evil normal mode"
+        (interactive)
+        (insert " "))
+
+(defun isnert-space-right ()
+        "Insert a space right of the cursor in evil normal mode"
+        (interactive)
+        (save-excursion (insert " ")))
+
+
 (setq dired-listing-switches "-alh")
 
-(map! "M-O" #'evil-insert-newline-above)
+(map! "M-o" #'evil-insert-newline-above)
 (map! "M-o" #'evil-insert-newline-below)
 (map! "§" #'toggle-evil-insert-normal)
 (map! "M-j" #'drag-stuff-down)
 (map! "M-k" #'drag-stuff-up)
+(map! "M-h" #'drag-stuff-left)
+(map! "M-l" #'drag-stuff-right)
+(map! :n "M-i" #'insert-space-left)
+(map! :n "M-I" #'insert-space-right)
+(map! :n "<tab>" #'tab-to-tab-stop)
 
 ;; Set the path to your Miniconda installation
 (setq conda-anaconda-home "~/miniconda3/")
