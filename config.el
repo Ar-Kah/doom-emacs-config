@@ -38,9 +38,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
-;; line-number colors
-(set-face-foreground 'line-number "#7f848e")                    ; muted gray for other lines
-(set-face-foreground 'line-number-current-line "#61afef")       ; bright blue for current line
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -105,7 +102,6 @@
           (forward-char 1)
           (insert " ")))
 
-
 (setq dired-listing-switches "-alh")
 
 (map! "M-O" #'evil-insert-newline-above)
@@ -118,6 +114,10 @@
 (map! :n "M-i" #'insert-space-left)
 (map! :n "M-I" #'insert-space-right)
 
+;; line-number colors
+(custom-set-faces!
+  (set-face-foreground 'line-number "#7f848e")
+  (set-face-foreground 'line-number-current-line "#61afef"))
 
 ;; Set the path to your Miniconda installation
 (setq conda-anaconda-home "~/miniconda3/")
