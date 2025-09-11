@@ -98,10 +98,12 @@
         (interactive)
         (insert " "))
 
-(defun isnert-space-right ()
+(defun insert-space-right ()
         "Insert a space right of the cursor in evil normal mode"
         (interactive)
-        (save-excursion (insert " ")))
+        (save-excursion
+          (forward-char 1)
+          (insert " ")))
 
 
 (setq dired-listing-switches "-alh")
@@ -115,7 +117,7 @@
 (map! "M-l" #'drag-stuff-right)
 (map! :n "M-i" #'insert-space-left)
 (map! :n "M-I" #'insert-space-right)
-(map! :n "<tab>" #'tab-to-tab-stop)
+
 
 ;; Set the path to your Miniconda installation
 (setq conda-anaconda-home "~/miniconda3/")
