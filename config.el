@@ -108,7 +108,7 @@
 
 (setq dired-listing-switches "-alh")
 
-(map! "M-o" #'evil-insert-newline-above)
+(map! "M-O" #'evil-insert-newline-above)
 (map! "M-o" #'evil-insert-newline-below)
 (map! "§" #'toggle-evil-insert-normal)
 (map! "M-j" #'drag-stuff-down)
