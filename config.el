@@ -77,30 +77,30 @@
 ;; they are implemented.
 
 (defun toggle-evil-insert-normal ()
-      "Toggle from evil insert mode to normal mode and vise versa."
-      (interactive)
-      (if (evil-insert-state-p)
-          (if (eolp)
-              (evil-normal-state)
-            (progn
-              (forward-char 1)
-              (evil-normal-state)))
-        ;; if in visual mode escape back to normal mode
-        (if (evil-visual-state-p)
-            (evil-normal-state)
-          (evil-insert-state))))
+  "Toggle from evil insert mode to normal mode and vise versa."
+  (interactive)
+  (if (evil-insert-state-p)
+      (if (eolp)
+          (evil-normal-state)
+        (progn
+          (forward-char 1)
+          (evil-normal-state)))
+    ;; if in visual mode escape back to normal mode
+    (if (evil-visual-state-p)
+        (evil-normal-state)
+(evil-insert-state))))
 
 (defun insert-space-left ()
-        "Insert a space left of the cursor in evil normal mode"
-        (interactive)
-        (insert " "))
+"Insert a space left of the cursor in evil normal mode"
+  (interactive)
+  (insert " "))
 
 (defun insert-space-right ()
-        "Insert a space right of the cursor in evil normal mode"
-        (interactive)
-        (save-excursion
-          (forward-char 1)
-          (insert " ")))
+  "Insert a space right of the cursor in evil normal mode"
+  (interactive)
+  (save-excursion
+    (forward-char 1)
+    (insert " ")))
 
 (setq dired-listing-switches "-alh")
 
