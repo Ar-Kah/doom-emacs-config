@@ -117,7 +117,8 @@
 ;; line-number colors
 (custom-set-faces!
   (set-face-foreground 'line-number "#7f848e")
-  (set-face-foreground 'line-number-current-line "#61afef"))
+  (set-face-foreground 'line-number-current-line "#61afef")
+  (set-face-attribute 'default nil :height 140))
 
 ;; Set the path to your Miniconda installation
 (setq conda-anaconda-home "~/miniconda3/")
