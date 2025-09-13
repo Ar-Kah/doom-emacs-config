@@ -75,6 +75,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(executable-find "pylsp")
 
 (defun toggle-evil-insert-normal ()
   "Toggle from evil insert mode to normal mode and vise versa."
@@ -91,7 +92,7 @@
 (evil-insert-state))))
 
 (defun insert-space-left ()
-"Insert a space left of the cursor in evil normal mode"
+  "Insert a space left of the cursor in evil normal mode"
   (interactive)
   (insert " "))
 
@@ -122,3 +123,10 @@
 
 ;; Set the path to your Miniconda installation
 (setq conda-anaconda-home "~/miniconda3/")
+
+;; Help emacs find my binaries for zsh also
+(setq vterm-shell "/bin/zsh")
+(use-package! exec-path-from-shell
+  :config
+  ;; Copy PATH and any other variables you might need
+  (exec-path-from-shell-initialize))
