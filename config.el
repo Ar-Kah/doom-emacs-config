@@ -75,7 +75,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(executable-find "pylsp")
 
 (defun toggle-evil-insert-normal ()
   "Toggle from evil insert mode to normal mode and vise versa."
@@ -114,12 +113,13 @@
 (map! "M-l" #'drag-stuff-right)
 (map! :n "M-i" #'insert-space-left)
 (map! :n "M-I" #'insert-space-right)
+(map! :n "C-x l" #'consult-line)
 
 ;; line-number colors
 (custom-set-faces!
   (set-face-foreground 'line-number "#7f848e")
   (set-face-foreground 'line-number-current-line "#61afef")
-  (set-face-attribute 'default nil :height 140))
+  (set-face-attribute 'default nil :height 120))
 
 ;; Set the path to your Miniconda installation
 (setq conda-anaconda-home "~/miniconda3/")
