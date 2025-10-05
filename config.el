@@ -130,3 +130,17 @@
   :config
   ;; Copy PATH and any other variables you might need
   (exec-path-from-shell-initialize))
+
+(after! magit
+  ;; Show commit date in the status buffer’s Recent commits
+  (setq magit-status-margin
+        '(t "%Y-%m-%d %H:%M" magit-log-margin-width t 18))
+
+  ;; Ensure that evil mode is active in magit
+  (require 'evil-collection)
+  (evil-collection-magit-setup))
+
+(after! conda
+  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+  (setq conda-env-home-directory (expand-file-name "~/miniconda3"))
+  (conda-env-autoactivate-mode -1)) ;; here you can toggle auto env activation
