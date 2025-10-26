@@ -140,7 +140,4 @@
   (require 'evil-collection)
   (evil-collection-magit-setup))
 
-(after! conda
-  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
-  (setq conda-env-home-directory (expand-file-name "~/miniconda3"))
-  (conda-env-autoactivate-mode -1)) ;; here you can toggle auto env activation
+(setq org-agenda-files '("~/Programming/Data.ml.100/notes/study_plan.org"))
