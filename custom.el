@@ -4,10 +4,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(drag-stuff exec-path-from-shell lsp-pyright)))
+ '(package-selected-packages
+   '(anaphora auto-package-update deferred drag-stuff evil-multiedit
+     exec-path-from-shell jupyter lsp-pyright multiple-cursors polymode request
+     with-editor)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'customize-option 'disabled nil)

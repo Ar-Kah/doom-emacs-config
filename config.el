@@ -104,6 +104,7 @@
 
 (setq dired-listing-switches "-alh")
 
+;; remaping keys
 (map! "M-O" #'evil-insert-newline-above)
 (map! "M-o" #'evil-insert-newline-below)
 (map! "§" #'toggle-evil-insert-normal)
@@ -114,6 +115,7 @@
 (map! :n "M-i" #'insert-space-left)
 (map! :n "M-I" #'insert-space-right)
 (map! :n "C-x l" #'consult-line)
+(map! "<f10>" #'toggle-frame-maximized)
 
 ;; line-number colors
 (custom-set-faces!
@@ -134,10 +136,22 @@
 (after! magit
   ;; Show commit date in the status buffer’s Recent commits
   (setq magit-status-margin
-        '(t "%Y-%m-%d %H:%M" magit-log-margin-width t 18))
+        '(t "%d-%m-%Y %H:%M" magit-log-margin-width t 18))
 
   ;; Ensure that evil mode is active in magit
   (require 'evil-collection)
   (evil-collection-magit-setup))
 
 (setq org-agenda-files '("~/Programming/Data.ml.100/notes/study_plan.org"))
+
+(after! doom
+  ;; Default height ratio of popup windows (0.25 = 25% of frame height)
+  (setq +popup-defaults
+        '(:side bottom :height 0.1 :width 0.4 :quit t :select ignore)))
+
+(after! vertico
+  (setq vertico-count 15))  ;; shorter minibuffer list
+
+(after! doom
+  (set-popup-rule! "^\\*vterm"        :side 'bottom :height 0.2 :select t)
+  (set-popup-rule! "^\\*compilation"  :side 'bottom :height 0.2 :select nil))
