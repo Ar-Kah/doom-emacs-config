@@ -177,5 +177,7 @@ of the cursor"
   (set-popup-rule! "^\\*vterm"        :side 'bottom :height 0.2 :select t)
   (set-popup-rule! "^\\*compilation"  :side 'bottom :height 0.2 :select nil))
 
-(require 'evil-multiedit)
-(evil-multiedit-default-keybinds)
+
+(after! evil
+  (require 'evil-multiedit)
+  (evil-multiedit-default-keybinds))
