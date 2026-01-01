@@ -90,13 +90,18 @@
         (evil-normal-state)
 (evil-insert-state))))
 
+;; ---------------
+;; Insert fuctions
+;; ---------------
 (defun doom-insert-new-line-above ()
-  "Insert a new line above the cursor without changing the place
-of the cursor"
+  "Insert a new line above the cursor without moving point."
   (interactive)
   (save-excursion
-    (beginning-of-line)
-    (newline)))
+    (if (bobp)
+        (newline)
+      (forward-line -1)
+      (end-of-line)
+      (newline))))
 
 (defun doom-insert-new-line ()
   "Insert a new line below the cursor without changing the palce
@@ -105,7 +110,6 @@ of the cursor"
   (save-excursion
     (evil-move-end-of-line)
     (insert (if use-hard-newlines hard-newline "\n"))))
-
 
 (defun insert-space-left ()
   "Insert a space left of the cursor in evil normal mode"
