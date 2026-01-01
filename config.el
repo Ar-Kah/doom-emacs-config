@@ -179,5 +179,8 @@ of the cursor"
 
 
 (after! evil
+  ;; this shit may brake and need to be redownloaded using
+  ;; M-x load-library evil-multiedit. Atleast this was how
+  ;; I fixed it last time it broke
   (require 'evil-multiedit)
   (evil-multiedit-default-keybinds))
