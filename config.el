@@ -91,12 +91,16 @@
 (evil-insert-state))))
 
 (defun doom-insert-new-line-above ()
+  "Insert a new line above the cursor without changing the place
+of the cursor"
   (interactive)
   (save-excursion
     (beginning-of-line)
     (newline)))
 
 (defun doom-insert-new-line ()
+  "Insert a new line below the cursor without changing the palce
+of the cursor"
   (interactive)
   (save-excursion
     (evil-move-end-of-line)
