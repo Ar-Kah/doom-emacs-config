@@ -202,3 +202,7 @@ of the cursor"
 
 ;; Ensure LSP knows where your Conda envs live
 (setq lsp-pyright-venv-path "~/miniconda3/envs")
+
+;; disable the mega annoying automatic comments on new line
+(setq-hook! 'c-mode comment-line-break-function nil)
+(setq-hook! 'python-mode comment-line-break-function nil)
