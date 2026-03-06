@@ -206,3 +206,6 @@ of the cursor"
 ;; disable the mega annoying automatic comments on new line
 (setq-hook! 'c-mode comment-line-break-function nil)
 (setq-hook! 'python-mode comment-line-break-function nil)
+
+;; Set a scroll margine for buffers
+(setq scroll-margin 6)
