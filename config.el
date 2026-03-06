@@ -88,7 +88,7 @@
     ;; if in visual mode escape back to normal mode
     (if (evil-visual-state-p)
         (evil-normal-state)
-(evil-insert-state))))
+      (evil-insert-state))))
 
 ;; ---------------
 ;; Insert fuctions
@@ -149,10 +149,6 @@ of the cursor"
 
 ;; Help emacs find my binaries for zsh also
 (setq vterm-shell "/bin/zsh")
-(use-package! exec-path-from-shell
-  :config
-  ;; Copy PATH and any other variables you might need
-  (exec-path-from-shell-initialize))
 
 (after! magit
   ;; Show commit date in the status buffer’s Recent commits
@@ -177,6 +173,9 @@ of the cursor"
   (set-popup-rule! "^\\*vterm"        :side 'bottom :height 0.2 :select t)
   (set-popup-rule! "^\\*compilation"  :side 'bottom :height 0.2 :select nil))
 
+;; tell Emacs where my custom shell path is
+(when (memq window-system '(x pgtk))
+  (exec-path-from-shell-initialize))
 
 (after! evil
   ;; this shit may brake and need to be redownloaded using
@@ -184,3 +183,22 @@ of the cursor"
   ;; I fixed it last time it broke
   (require 'evil-multiedit)
   (evil-multiedit-default-keybinds))
+
+(use-package! pdf-tools
+  :config
+  (pdf-tools-install))
+
+(after! lsp-pyright
+  (setq lsp-pyright-langserver-command "/usr/bin/pyright")
+  ;; Tell pyright to use the python in your current environment
+  (setq lsp-pyright-python-executable "python3")
+  ;; If pyright is too slow, increase the timeout
+  (setq lsp-response-timeout 20))
+
+;; Make Company less "aggressive" to avoid the completion error
+(after! company
+  (setq company-idle-delay 0.3
+        company-minimum-prefix-length 2))
+
+;; Ensure LSP knows where your Conda envs live
+(setq lsp-pyright-venv-path "~/miniconda3/envs")
