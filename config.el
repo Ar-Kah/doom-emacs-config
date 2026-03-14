@@ -207,5 +207,21 @@ of the cursor"
 (setq-hook! 'c-mode comment-line-break-function nil)
 (setq-hook! 'python-mode comment-line-break-function nil)
 
+(setq +default-want-RET-continue-comments nil)
+(setq +evil-want-o/O-to-continue-comments nil)
+
 ;; Set a scroll margine for buffers
-(setq scroll-margin 6)
+(setq scroll-margin 0)
+
+(pixel-scroll-precision-mode 1)
+
+;;  Some documentation on how to find stuff in Emacs
+;; SPC h v for looking up variables
+;; SPC h f for looking up functions
+;; SPC h k for looking up keys
+
+;; variables and functions with a + in the begining
+;; are Doom Emacs added stuff
+
+;; apropos-variable can be used to find keywords in
+;; documentation
