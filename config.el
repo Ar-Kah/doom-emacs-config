@@ -126,17 +126,17 @@ of the cursor"
 (setq dired-listing-switches "-alh")
 
 ;; remaping keys
-(map! "M-O" #'doom-insert-new-line-above)
-(map! "M-o" #'doom-insert-new-line)
-(map! "§" #'toggle-evil-insert-normal)
-(map! "M-j" #'drag-stuff-down)
-(map! "M-k" #'drag-stuff-up)
-(map! "M-h" #'drag-stuff-left)
-(map! "M-l" #'drag-stuff-right)
-(map! :n "M-i" #'insert-space-left)
-(map! :n "M-I" #'insert-space-right)
-(map! :n "C-x l" #'consult-line)
-(map! "<f10>" #'toggle-frame-maximized)
+(map!           "M-O"             #'doom-insert-new-line-above)
+(map!           "M-o"             #'doom-insert-new-line)
+(map!           "§"               #'toggle-evil-insert-normal)
+(map!           "M-j"             #'drag-stuff-down)
+(map!           "M-k"             #'drag-stuff-up)
+(map!           "M-h"             #'drag-stuff-left)
+(map!           "M-l"             #'drag-stuff-right)
+(map!           :n "M-i"          #'insert-space-left)
+(map!           :n "M-I"          #'insert-space-right)
+(map!           :n "C-x l"        #'consult-line)
+(map!           "<f10>"           #'toggle-frame-maximized)
 
 ;; line-number colors
 (custom-set-faces!
@@ -158,6 +158,15 @@ of the cursor"
   ;; Ensure that evil mode is active in magit
   (require 'evil-collection)
   (evil-collection-magit-setup))
+
+;; Adding custom functionality to the function split-window-right
+;; automatically also focuse/select the new window to move the cursor there
+(defun my-select-new-window-right (new-window &rest _)
+  "Focus the NEW-WINDOW created by split-window-right."
+  (when (windowp new-window)
+    (select-window new-window)))
+
+(advice-add 'split-window-right :filter-return #'my-select-new-window-right)
 
 (setq org-agenda-files '("~/Programming/Data.ml.100/notes/study_plan.org"))
 
@@ -206,14 +215,15 @@ of the cursor"
 ;; disable the mega annoying automatic comments on new line
 (setq-hook! 'c-mode comment-line-break-function nil)
 (setq-hook! 'python-mode comment-line-break-function nil)
-
 (setq +default-want-RET-continue-comments nil)
 (setq +evil-want-o/O-to-continue-comments nil)
 
 ;; Set a scroll margine for buffers
-(setq scroll-margin 0)
+(setq scroll-margin 10)
 
-(pixel-scroll-precision-mode 1)
+;; when we hit the scroll margin new lines
+;; will make the cursore stay in place.
+(setq scroll-conservatively 101)
 
 ;;  Some documentation on how to find stuff in Emacs
 ;; SPC h v for looking up variables
