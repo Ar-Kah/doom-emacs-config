@@ -126,17 +126,24 @@ of the cursor"
 (setq dired-listing-switches "-alh")
 
 ;; remaping keys
-(map!           "M-O"             #'doom-insert-new-line-above)
-(map!           "M-o"             #'doom-insert-new-line)
-(map!           "§"               #'toggle-evil-insert-normal)
-(map!           "M-j"             #'drag-stuff-down)
-(map!           "M-k"             #'drag-stuff-up)
-(map!           "M-h"             #'drag-stuff-left)
-(map!           "M-l"             #'drag-stuff-right)
-(map!           :n "M-i"          #'insert-space-left)
-(map!           :n "M-I"          #'insert-space-right)
-(map!           :n "C-x l"        #'consult-line)
-(map!           "<f10>"           #'toggle-frame-maximized)
+(map!   "M-O"           #'doom-insert-new-line-above)
+(map!   "M-o"           #'doom-insert-new-line)
+(map!   "§"             #'toggle-evil-insert-normal)
+(map!   "M-j"           #'drag-stuff-down)
+(map!   "M-k"           #'drag-stuff-up)
+(map!   "M-h"           #'drag-stuff-left)
+(map!   "M-l"           #'drag-stuff-right)
+(map!   :n "M-i"        #'insert-space-left)
+(map!   :n "M-I"        #'insert-space-right)
+(map!   :n "C-x l"      #'consult-line)
+(map!   "<f10>"         #'toggle-frame-maximized)
+(map!   "C-M-h"         #'switch-to-prev-buffer)
+(map!   "C-M-l"         #'switch-to-next-buffer)
+
+(map!   "C-M-j"         #'evil-window-down)
+(map!   "C-M-k"         #'evil-window-up)
+(map!   "C-M-n"         #'evil-window-left)
+(map!   "C-M-m"         #'evil-window-right)
 
 ;; line-number colors
 (custom-set-faces!
@@ -218,12 +225,11 @@ of the cursor"
 (setq +default-want-RET-continue-comments nil)
 (setq +evil-want-o/O-to-continue-comments nil)
 
-;; Set a scroll margine for buffers
-(setq scroll-margin 10)
-
 ;; when we hit the scroll margin new lines
 ;; will make the cursore stay in place.
-(setq scroll-conservatively 101)
+
+;; Set a scroll margine for buffers
+(setq scroll-margin 15)
 
 ;;  Some documentation on how to find stuff in Emacs
 ;; SPC h v for looking up variables
